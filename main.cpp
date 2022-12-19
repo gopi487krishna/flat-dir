@@ -1,6 +1,8 @@
 #include <filesystem>
 #include <iostream>
 
+std::uint64_t file_size_warning_threshold = 134217728;
+
 int main(int argc, char **argv) {
   const std::filesystem::path starting_path{std::filesystem::current_path()};
 
@@ -37,11 +39,18 @@ int main(int argc, char **argv) {
 
           if ( entry.is_directory())
           {
-              std::cout <<"[dir]" << entry.path().filename().string() << '\n';
+              std::cout <<"[dir:]" << entry.path().filename().string() << '\n';
           }
           else if (entry.is_regular_file())
           {
-              std::cout <<"[file]" << entry.path().filename().string() << '\n';
+              if (std::filesystem::file_size(entry) >= file_size_warning_threshold)
+              {
+                  std::cout<< "[file: size threshold excedded]" << entry.path().filename().string() << '\n';
+              }
+              else {
+              
+                  std::cout <<"[file:]" << entry.path().filename().string() << '\n';
+              }
               /*Copy the files to main folder with sequence*/
               std::filesystem::copy_file(entry, output_dir_name/(filename_str + '_' + std::to_string(counter++))); 
          }

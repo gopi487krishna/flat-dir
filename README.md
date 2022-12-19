@@ -1,6 +1,6 @@
 # flat-dir
 
-Flats the contents of directory into the root folder
+Flats the contents of directory into the root folder. Works in Linux, MacOS, Windows
 
 
 # Steps to build

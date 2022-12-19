@@ -3,7 +3,16 @@
 
 int main(int argc, char **argv) {
   const std::filesystem::path starting_path{std::filesystem::current_path()};
-  std::filesystem::path output_root{"/home/cooldev/outputs/"}; /* Specify where output folders will reside */
+
+  const char* OUTPUT_ROOT_ENV = std::getenv("OUTPUT_ROOT");
+
+  if (OUTPUT_ROOT_ENV == nullptr)
+  {
+      std::cerr << "Environment variable OUTPUT_ROOT undefined\n";
+      std::abort();
+  }
+
+  std::filesystem::path output_root{OUTPUT_ROOT_ENV}; /* Specify where output folders will reside  Example : export OUTPUT_ROOT="/home/cooldev/outputs/" */
 
   /* Recursively iterate over directories and start checking */
   for(const auto& parent_dirs : std::filesystem::directory_iterator(starting_path))

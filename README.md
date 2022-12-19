@@ -19,3 +19,5 @@ Flats the contents of directory into the root folder
 - Place the executable inside this directory that contains other directories to be processed.
 - Set the OUTPUT_ROOT environment variable to the path where you want the flattened directory to be stored
 - Run the executable to flatten the directories.
+
+[![asciicast](https://asciinema.org/a/2Nj2smiSEOye6UAeD0509oXD8.svg)](https://asciinema.org/a/2Nj2smiSEOye6UAeD0509oXD8)

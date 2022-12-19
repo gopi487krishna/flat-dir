@@ -14,5 +14,8 @@ Flats the contents of directory into the root folder
 
 # Using flat-dir
 
-- Place the executable outside the directories that you want to flatten
-- Run the executable to flatten the directories
+- Create a parent directory which will contain all the directories that you want to process.
+- Copy the directories that you want to process into the above directory.
+- Place the executable inside this directory that contains other directories to be processed.
+- Set the OUTPUT_ROOT environment variable to the path where you want the flattened directory to be stored
+- Run the executable to flatten the directories.
